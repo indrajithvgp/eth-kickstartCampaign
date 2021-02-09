@@ -16,7 +16,7 @@ class ContributeForm extends Component {
             const accounts = await web3.eth.getAccounts()
             await campaign.methods.contribute().send({from:accounts[0], value:web3.utils.toWei(this.state.value)})
             
-            Router.replaceRoute(`/compaigns/${this.props.address}`)
+            Router.replaceRoute(`/campaigns/${this.props.address}`)
         }catch(e){
             this.setState({eMessage:e.message})
         }

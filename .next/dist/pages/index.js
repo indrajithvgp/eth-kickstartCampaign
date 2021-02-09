@@ -68,7 +68,7 @@ var CampaignIndex = function (_Component) {
             var items = this.props.campaigns.map(function (address) {
                 return {
                     header: address,
-                    description: _react2.default.createElement(_routes.Link, { route: "/compaigns/" + address, __source: {
+                    description: _react2.default.createElement(_routes.Link, { route: "/campaigns/" + address, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 19
                         }
