@@ -13,7 +13,7 @@ class RequestIndex extends React.Component {
         const campaign = Campaign(address)
         // console.log(campaign)
         const requestCount = await campaign.methods.getRequestsCount().call()
-        // const approversCount = await campaign.methods.approversCount().call()
+        const approversCount = await campaign.methods.approversCount().call()
 
         const requests = await Promise.all(
             Array(parseInt(requestCount)).fill().map((element, index) =>{
@@ -23,14 +23,15 @@ class RequestIndex extends React.Component {
 
         // console.log(requests)
         // console.log(requestCount)
-        return {address, requests, requestCount}
+        return {address, requests, requestCount, approversCount}
 
     }
 
     renderRows=()=>{
         return this.props.requests.map((request, index)=>{
             return (
-                <RequestRow id={index} key={index} request={request} address={this.props.address}  />
+                <RequestRow id={index} key={index} request={request} address={this.props.address} 
+                approversCount={this.props.approversCount}  />
             )
         })
     }
@@ -42,7 +43,7 @@ class RequestIndex extends React.Component {
                 <h3>Requests</h3>
                 <Link route={`/campaigns/${this.props.address}/requests/new`}>
                     <a>
-                        <Button primary>Add Request</Button>    
+                        <Button style={{margin: "10px" }} floated = "right" color='teal'>Add Request</Button>  
                     </a>
                 </Link>
                 <Table>
