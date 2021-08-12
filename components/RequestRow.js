@@ -10,7 +10,7 @@ export default class RequestRow extends Component {
         const accounts = await web3.eth.getAccounts()
         const campaign = Campaign(this.props.address)
         await campaign.methods.approveRequest(this.props.id).send({from:accounts[0]})
-        Router.pushRoute('/compaigns/requests/index') 
+        Router.pushRoute('/campaigns/requests/index') 
     }
 
     onFinalize=async()=>{
